@@ -2,8 +2,6 @@
 
 **NurseryConnect** is a specialized iOS application designed for nursery keyworkers (Early Years Practitioners). It provides a seamless, offline-first experience for tracking children's daily activities, including meals, sleep, mood, and health-related events.
 
----
-
 ## 🎯 Key Features
 
 ### 👤 My Children Dashboard
