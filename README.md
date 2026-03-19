@@ -2,76 +2,85 @@
 
 **NurseryConnect** is a specialized iOS application designed for nursery keyworkers (Early Years Practitioners). It provides a seamless, offline-first experience for tracking children's daily activities, including meals, sleep, mood, and health-related events.
 
+---
+
 ## 🎯 Key Features
 
 ### 👤 My Children Dashboard
-- **Real-time Overview**: View a list of all assigned children.
-- **Search & Filter**: Quickly find children by name using the integrated search bar.
+- **Real-time Overview**: View a list of all assigned children (Noah, Lily, Oliver).
+- **Search & Filter**: Quickly find children by name.
 - **Health Alerts**: Immediate visual indicators for children with registered allergies.
-- **Daily Progress**: Smart badges highlight children who are missing diary entries for the current day.
+- **Daily Progress**: Smart badges highlight children missing diary entries for today.
 
 ### 📅 Child Diary Timeline
 - **Chronological Tracking**: A clean, color-coded timeline of all daily events.
-- **Activity Types**: Specialized tracking for Meals, Sleep, Nappy changes, Mood, and Activities.
+- **Activity Types**: Specialized tracking for Meals, Sleep, Nappy, Mood, and Activities.
 - **Smart Filtering**: Toggle between "Today Only" and "Full History" views.
-- **Emergency Access**: Quick-action button to view emergency contact details and call primary guardians.
+- **Emergency Access**: Quick-action button to view emergency contact details.
 
 ### 📝 Add Diary Entry (Dynamic Form)
-- **Conditional UI**: The form adapts based on the activity type (e.g., Food/Portion for meals, Start/End times for sleep).
-- **Validation**: Built-in alerts ensure critical data is captured before saving.
-- **Notes**: Support for detailed observations and practitioner comments.
+- **Conditional UI**: Form adapts for Meals (Food/Portion), Sleep (Times), or Nappy (Type).
+- **Validation**: Alerts ensure critical data is captured before saving.
+
+---
 
 ## 🛠 Technical Stack
 
-- **Platform**: iOS 17.0+
-- **Language**: Swift
-- **UI Framework**: SwiftUI
-- **Storage**: SwiftData (Local, Offline-first)
+- **Platform**: iOS 17.0+ (SwiftUI)
+- **Database**: SwiftData (Local, Offline-first)
 - **Architecture**: Lightweight MVVM
+- **Testing**: XCTest with in-memory SwiftData configuration.
+
+---
 
 ## 📁 Project Structure & Files
 
 ### 📂 App/
-- **[NurseryConnectApp.swift](file:///c:/Users/buddh/Desktop/swiftuiapp/NurseryConnect/App/NurseryConnectApp.swift)**: The entry point of the application. It initializes the SwiftData container and handles the initial data seeding.
+- **NurseryConnectApp.swift**: Entry point. Initializes SwiftData and handles seeding.
 
 ### 📂 Models/
-- **[Child.swift](file:///c:/Users/buddh/Desktop/swiftuiapp/NurseryConnect/Models/Child.swift)**: Defines the `Child` entity with attributes like `name`, `age`, and `allergies`.
-- **[DiaryEntry.swift](file:///c:/Users/buddh/Desktop/swiftuiapp/NurseryConnect/Models/DiaryEntry.swift)**: Defines the `DiaryEntry` entity and the `EntryType` enum (Meal, Sleep, Mood, etc.).
+- **Child.swift**: `Child` entity (Name, Age, Allergies, Emergency Contact).
+- **DiaryEntry.swift**: `DiaryEntry` entity and `EntryType` enum.
 
 ### 📂 ViewModels/
-- **[ChildViewModel.swift](file:///c:/Users/buddh/Desktop/swiftuiapp/NurseryConnect/ViewModels/ChildViewModel.swift)**: Manages the business logic for the main dashboard, including search and child status computation.
-- **[DiaryViewModel.swift](file:///c:/Users/buddh/Desktop/swiftuiapp/NurseryConnect/ViewModels/DiaryViewModel.swift)**: Handles the logic for a specific child's timeline, such as filtering and adding new entries.
+- **ChildViewModel.swift**: Dashboard logic (Search, status computation).
+- **DiaryViewModel.swift**: Timeline logic (Filtering, adding/deleting entries).
 
 ### 📂 Views/
-- **[MyChildrenView.swift](file:///c:/Users/buddh/Desktop/swiftuiapp/NurseryConnect/Views/MyChildrenView.swift)**: The main dashboard screen displaying the list of children.
-- **[ChildDiaryView.swift](file:///c:/Users/buddh/Desktop/swiftuiapp/NurseryConnect/Views/ChildDiaryView.swift)**: The timeline view for a specific child.
-- **[AddEntryView.swift](file:///c:/Users/buddh/Desktop/swiftuiapp/NurseryConnect/Views/AddEntryView.swift)**: The dynamic form for adding new activities.
-
-### 📂 Views/Components/
-- **[ChildRow.swift](file:///c:/Users/buddh/Desktop/swiftuiapp/NurseryConnect/Views/Components/ChildRow.swift)**: A reusable row view for the children list.
-- **[DiaryEntryRow.swift](file:///c:/Users/buddh/Desktop/swiftuiapp/NurseryConnect/Views/Components/DiaryEntryRow.swift)**: A reusable row view for the diary timeline.
+- **MyChildrenView.swift**: Main dashboard screen.
+- **ChildDiaryView.swift**: Timeline view for a specific child.
+- **AddEntryView.swift**: Dynamic form for adding activities.
+- **Components/**: Reusable views like `ChildRow` and `DiaryEntryRow`.
 
 ### 📂 Data/
-- **[SampleData.swift](file:///c:/Users/buddh/Desktop/swiftuiapp/NurseryConnect/Data/SampleData.swift)**: Contains the seeding logic to ensure the app has initial data for testing.
+- **SampleData.swift**: Seeding logic for initial testing.
 
-### 📂 Utils/
-- **[Extensions.swift](file:///c:/Users/buddh/Desktop/swiftuiapp/NurseryConnect/Utils/Extensions.swift)**: Provides helpful extensions for `Date` and `Color` used throughout the app.
+### 📂 NurseryConnectTests/
+- **DiaryViewModelTests.swift**: Unit tests for business logic.
 
-## 🚀 Getting Started
+---
 
-1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/Buddhila-Herath/swift-ui.git
-   ```
-2. **Open in Xcode**: Open the project folder in Xcode 15 or later.
-3. **Run**: Select an iOS 17+ Simulator or a physical device and press `Cmd + R`.
-4. **Sample Data**: The app automatically seeds 3 sample children (Noah, Lily, Oliver) upon the first launch for immediate testing.
+## ⚙️ Setup Instructions (Xcode 15+)
 
-## 🔐 Compliance & Security (MVP Scope)
+1. **Create Project**: Create a new iOS App project in Xcode called `NurseryConnect`.
+2. **Settings**: Set **Interface** to `SwiftUI` and **Language** to `Swift`.
+3. **Minimum target**: Ensure **Minimum Deployments** is set to **iOS 17.0**.
+4. **Import Files**: 
+   - Delete the default `ContentView.swift` and `NurseryConnectApp.swift`.
+   - Right-click your project folder and select **Add Files to "NurseryConnect"...**
+   - Select all the folders (`App`, `Models`, `ViewModels`, `Views`, `Data`, `Utils`, `NurseryConnectTests`) from this directory.
+5. **Run**: Select an iOS 17 Simulator and press **Cmd + R**.
 
-- **Data Minimization**: Only essential care tracking data is collected.
-- **Local Storage**: Data remains on the device, reducing exposure risks in the MVP stage.
-- **Sensitive Info**: Allergies and emergency contacts are prioritized for safety.
+---
+
+## 🧪 Verification & Walkthrough
+
+- [x] **Sample Data**: Noah, Lily, and Oliver appear correctly on first launch.
+- [x] **Navigation**: Smooth transitions between list and diary views.
+- [x] **Adding Entries**: New entries save and update the UI instantly.
+- [x] **Validation**: Error alerts trigger if required fields (like Food) are missing.
+- [x] **Emergency Contact**: Correct contact info shows in the emergency alert.
+- [x] **Unit Tests**: Pass for entry addition, deletion, and date filtering.
 
 ---
 *Built with ❤️ for Early Years Practitioners.*
