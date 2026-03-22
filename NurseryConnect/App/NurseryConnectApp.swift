@@ -7,7 +7,7 @@ struct NurseryConnectApp: App {
     
     var body: some Scene {
         WindowGroup {
-            MyChildrenView()
+            MyChildrenView()r
                 .modelContainer(container)
         }
     }
